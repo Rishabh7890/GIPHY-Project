@@ -17,14 +17,14 @@
     <div class="jumbotron jumbotron-fluid">
       <h1 class="display-3"> The GIPHY Factory</h1>
 
-      <div id="buttons-view"></div>
+      <!-- <div id="buttons-view"></div> -->
 
       <form id="gif-form">
         <label for="gif-input">We have every GIF out there! What are you thinking of?</label>
         <input type="text" id="gif-input"><br>
 
-        <input class="btn btn-outline-primary btn-lg" id="add-gif" type="submit" value="Add some more GIFS!">
-        <div class="btn-group btn-group-sm" role="group" aria-label="Popular Categories">
+        <input class="btn btn-outline-primary btn-lg add-gif" type="submit" value="Add some more GIFS!">
+        <div class="btn-group btn-group-sm add-gif" id="buttons-view" role="group" aria-label="Popular Categories">
           <button data-gif="funny">funny</button>
           <button data-gif="dogs">dogs</button>
           <button data-gif="cats">cats</button>
@@ -39,6 +39,7 @@
           <button data-gif="politics">politics</button>
         </div>
       </form>
+      <hr>
 
       <div id="gifs-view"></div>
     </div>
