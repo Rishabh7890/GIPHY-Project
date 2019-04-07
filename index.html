@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<title>GIPHY Project</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>GIPHY Project</title>
 </head>
+
 <body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="assets/javascript/app.js"></script>
+  <div class="container">
+    <div class="jumbotron jumbotron-fluid">
+      <h1 class="display-3"> The GIPHY Factory</h1>
+
+      <div id="buttons-view"></div>
+
+      <form id="gif-form">
+        <label for="gif-input">We have every GIF out there! What are you thinking of?</label>
+        <input type="text" id="gif-input"><br>
+
+        <input class="btn btn-outline-primary btn-lg" id="add-gif" type="submit" value="Add some more GIFS!">
+        <div class="btn-group btn-group-sm" role="group" aria-label="Popular Categories">
+          <button data-gif="funny">funny</button>
+          <button data-gif="dogs">dogs</button>
+          <button data-gif="cats">cats</button>
+          <button data-gif="sports">sports</button>
+          <button data-gif="movies">movies</button>
+          <button data-gif="anime">anime</button>
+          <button data-gif="music">music</button>
+          <button data-gif="art">art</button>
+          <button data-gif="gaming">gaming</button>
+          <button data-gif="cities">cities</button>
+          <button data-gif="holiday">holiday</button>
+          <button data-gif="politics">politics</button>
+        </div>
+      </form>
+
+      <div id="gifs-view"></div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="assets/javascript/app.js"></script>
 </body>
+
 </html>
