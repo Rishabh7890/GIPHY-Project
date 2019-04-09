@@ -13,37 +13,27 @@
 
 <body>
 
-  <div class="container">
-    <div class="jumbotron jumbotron-fluid">
-      <h1 class="display-3"> The GIPHY Factory</h1>
-
-      <!-- <div id="buttons-view"></div> -->
-
-      <form id="gif-form">
-        <label for="gif-input">We have every GIF out there! What are you thinking of?</label>
-        <input type="text" id="gif-input"><br>
-
-        <input class="btn btn-outline-primary btn-lg add-gif" type="submit" value="Add some more GIFS!">
-        <div class="btn-group btn-group-sm add-gif" id="buttons-view" role="group" aria-label="Popular Categories">
-          <button data-gif="funny">funny</button>
-          <button data-gif="dogs">dogs</button>
-          <button data-gif="cats">cats</button>
-          <button data-gif="sports">sports</button>
-          <button data-gif="movies">movies</button>
-          <button data-gif="anime">anime</button>
-          <button data-gif="music">music</button>
-          <button data-gif="art">art</button>
-          <button data-gif="gaming">gaming</button>
-          <button data-gif="cities">cities</button>
-          <button data-gif="holiday">holiday</button>
-          <button data-gif="politics">politics</button>
-        </div>
-      </form>
-      <hr>
-
-      <div id="gifs-view"></div>
+  <div class="page-wrapper">
+    <!-- <div class="container"> -->
+    <div class="left-column">
+      <div class="jumbotron jumbotron-fluid shadow p-3 mb-5 rounded">
+        <h1 class="display-3"> The GIPHY Factory</h1>
+        <form id="gif-form" class="my-3">
+          <div class="form-group">
+            <label for="gif-input">We have every GIF out there! What are you thinking of?</label>
+            <input class="form-control" id="gif-input" placeholder="Search"><br>
+          </div>
+          <input class="btn btn-outline-primary btn-lg add-gif" type="submit" value="Add some more GIFS!">
+          <div id="gif-buttons"></div>
+        </form>
+      </div>
     </div>
-  </div>
+
+      <div class="right-column">
+          <h3>Currently Showing Results For: <span id="search-term"></span></h3>
+          <div class="row" id="gifs-displayed"></div>
+      </div>
+  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

@@ -1,70 +1,100 @@
-//create empty string for gifs to be added
-var gifs = [""];
+var btnArray = [
+  "Funny",
+  "Dogs",
+  "Cats",
+  "Sports",
+  "Gaming",
+  "Movies",
+  "TV",
+  "Anime",
+  "Politics",
+  "Random"
+];
+for (var i = 0; i < btnArray.length; i++) {
+  $("#gif-buttons").append(
+    "<button type='button' onclick='searchGIFs(\"" +
+      btnArray[i] +
+      "\")' class='btn btn-outline-danger btn-sm' value=' " +
+      btnArray[i] +
+      "'> " +
+      btnArray[i] +
+      " </button>"
+  );
+}
 
-//function displayGifInfo re-renders HTML to display content 
-function displayMovieInfo() {
+function addBtn() {
+  $("#gif-buttons").empty();
+  for (var i = 0; i < btnArray.length; i++) {
+    $("#gif-buttons").append(
+      "<button type='button' onclick='searchGIFs(\"" +
+        btnArray[i] +
+        "\")' class='btn btn-outline-danger btn-sm' value=' " +
+        btnArray[i] +
+        "'> " +
+        btnArray[i] +
+        " </button>"
+    );
+  }
 
-  var gif = $(this).attr("data-gif");
+  
+}
+
+function searchGIFs(event) {
+  event.preventDefault();
+
+  var searchTerm = $("#gif-input")
+    .val()
+    .trim();
+
+  if (searchTerm === "") {
+    return false;
+  }
+
   var apiKey = "&api_key=ATitLzqHisbzyItV8xmCrCqEKbGnqMYM";
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + apiKey + "&limit=10";
+  var queryURL =
+    "http://api.giphy.com/v1/gifs/search?q=" +
+    searchTerm +
+    apiKey +
+    "&limit=10";
 
-  //Create AJAX call for specific gif button being clicked 
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
 
-    //store data from the AJAX request in a results variable
     var results = response.data;
 
-    //Loop through the results and create a div with image and rating for each one 
     for (var i = 0; i < results.length; i++) {
-
       var gifDiv = $("<div>");
 
-      var gifRating = $("<p>").text("Rating: " + results[i].rating);
+      var p = $("<p>").text("Rating: " + results[i].rating);
 
       var gifImage = $("<img>");
 
-      gifImage.attr("src", results[i].images.fixed_height.url);
+      gifImage.addClass("gif");
 
+      gifImage.attr("src", results[i].images.fixed_height_still.url);
+
+      gifDiv.append(p);
       gifDiv.append(gifImage);
-      gifDiv.append(gifRating);
 
-      $("#gifs-view").prepend(gifDiv);
+      $("#gifs-displayed").prepend(gifDiv);
     }
-  })
+  });
 }
 
-function renderButtons () {
+$(document).ready(function() {
+  $("#gif-form").on("submit", searchGIFs);
 
-  $("buttons-view").empty();
-
-  for (var i = 0; i < gifs.length; i++) {
-
-    var newBtn = $("<button>");
-    newBtn.addClass("gif");
-    newBtn.attr("data-gif", gifs[i]);
-    newBtn.text(gifs[i]);
-    $("buttons-view").append(newBtn);
-  }
-}
-
-$(".add-gif").on("click",function(event) {
-  event.preventDefault();
-
-  var gif = $("#gif-input").val().trim();
-
-  gifs.push(gif);
-
-  renderButtons();
-})
-
-$(document).on("click", ".add-gif", displayMovieInfo);
-
-renderButtons();
-
-
-//Errors with code: 
-// Same gifs print everytime no matter which button is pressed
+  $(".gif").on("click", function() {
+    var state = $(this).attr("data-state");
+    if (state === "still") {
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+    }
+  });
+});
