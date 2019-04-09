@@ -2,8 +2,13 @@
   display: flex;
   min-height: 100vh;
   align-items: stretch;
-  color: #333;
+  color:black;
   font-size: 16px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
 }
 
 #gif-buttons {
@@ -12,7 +17,7 @@
 
 .left-column {
   flex: 1;
-  background: #2e0505;
+  background: #130202;
   min-height:100vh;
   padding: 25px;
   box-shadow: 0 0 5px #222;
@@ -22,6 +27,22 @@
 
 .right-column {
   flex: 3;
-  padding: 20px;
-  background: #dedede
+  padding: 50px;
+  background-color: antiquewhite;
+  background-image: url("https://images.pexels.com/photos/1428169/pexels-photo-1428169.jpeg?cs=srgb&dl=colorful-colors-colourful-1428169.jpg&fm=jpg?dl&fit=crop&crop=entropy&w=1920&h=2880");
+  background-blend-mode: exclusion;
 }
+
+.pageTitle {
+  font-family: 'Audiowide', cursive;
+  color: antiquewhite
+}
+
+.jumboLabel {
+  color: antiquewhite;
+}
+
+.gif {
+  padding: 5px;
+}
+

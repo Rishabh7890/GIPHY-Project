@@ -110,7 +110,9 @@ function searchGIFs(event) {
       $("#gifs-displayed").prepend(gifDiv);
 
       addBtn();
-    }
+
+      $("#gif-input").val("");
+        }
   });
 }
   
@@ -133,6 +135,10 @@ $("#gifs-displayed").on("click", ".gif", function(event){
 $(document).ready(function() {
   $("#gif-form").on("submit", searchGIFs);
   addBtn();
+
+  $("#clear").on("click", function() {
+    $("#gifs-displayed, #gif-input").empty();
+  });
 
 });
 

@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Audiowide|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <title>GIPHY Project</title>
 </head>
@@ -14,31 +15,33 @@
 <body>
 
   <div class="page-wrapper">
-    <!-- <div class="container"> -->
     <div class="left-column">
-      <div class="jumbotron jumbotron-fluid shadow p-3 mb-5 rounded">
-        <h1 class="display-3"> The GIPHY Factory</h1>
+      <div class="jumbotron jumbotron-fluid bg-dark shadow p-3 mb-5 rounded">
+        <h1 class="display-3 pageTitle">The GIPHY Factory</h1>
         <form id="gif-form" class="my-3">
           <div class="form-group">
-            <label for="gif-input">We have every GIF out there! What are you thinking of?</label>
-            <input class="form-control" id="gif-input" placeholder="Search"><br>
+            <label class="jumboLabel" for="gif-input">We have every GIF out there!</label>
+            <input class="form-control" id="gif-input" placeholder="What are you thinking of?"><br>
           </div>
-          <input class="btn btn-outline-primary btn-lg add-gif submit" type="submit" value="Add some more GIFS!">
+          <input class="btn btn-outline-primary btn-lg add-gif submit" type="submit" value="Search GIFs!">
+          <hr>
+          <button id="clear" class="btn btn-block btn-danger">Clear Results</button>
           <div id="gif-buttons"></div>
         </form>
       </div>
     </div>
 
-      <div class="right-column">
-          <h3>Currently Showing Results For: <span id="search-term"></span></h3>
-          <div class="row" id="gifs-displayed"></div>
-      </div>
-  
+    <div class="right-column">
+      <div class="row" id="gifs-displayed"></div>
+    </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="assets/javascript/app.js"></script>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>
