@@ -18,9 +18,7 @@ function addBtn() {
   $("#gif-buttons").empty();
   for (var i = 0; i < btnArray.length; i++) {
     $("#gif-buttons").append(
-      "<button type='button' onclick='searchGIFs(\"" +
-        btnArray[i] +
-        "\")' class='btn btn-outline-danger btn-sm' value=' " +
+      "<button type='button' class='btn btn-outline-danger btn-sm' value=' " +
         btnArray[i] +
         "'> " +
         btnArray[i] +
@@ -65,7 +63,8 @@ $("#gif-buttons").on("click", ".btn", function() {
 });
 
 function searchGIFs(event) {
-  event.preventDefault();
+    event.preventDefault();
+  
 
   searchTerm = $("#gif-input")
     .val()
