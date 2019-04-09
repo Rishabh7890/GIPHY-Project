@@ -19,8 +19,6 @@ Created a website that is linked to GIPHY using API key. User will have the abil
 
 ## Upcoming Improvements
 
-- Larger library of GIFs
-
 - Randomly display GIFs for the category searched not just the same ones every time
 
 
