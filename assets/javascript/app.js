@@ -30,7 +30,7 @@ function addBtn() {
 }
 
 $("#gif-buttons").on("click", ".btn", function() {
-  var btnData = $(this).attr("data");
+  var btnData = $(this).val();
   var apiKey = "&api_key=ATitLzqHisbzyItV8xmCrCqEKbGnqMYM";
   var queryURL =
     "http://api.giphy.com/v1/gifs/search?q=" + btnData + apiKey + "&limit=10";
@@ -138,5 +138,3 @@ $(document).ready(function() {
 });
 
 
-// Errors with code
-// buttons all produce same 10 gifs no matter which button is pressed 
