@@ -10,17 +10,9 @@ var btnArray = [
   "Politics",
   "Random"
 ];
-for (var i = 0; i < btnArray.length; i++) {
-  $("#gif-buttons").append(
-    "<button type='button' onclick='searchGIFs(\"" +
-      btnArray[i] +
-      "\")' class='btn btn-outline-danger btn-sm' value=' " +
-      btnArray[i] +
-      "'> " +
-      btnArray[i] +
-      " </button>"
-  );
-}
+
+var btn;
+var searchTerm = "";
 
 function addBtn() {
   $("#gif-buttons").empty();
@@ -35,14 +27,47 @@ function addBtn() {
         " </button>"
     );
   }
-
-  
 }
+
+$("#gif-buttons").on("click", ".btn", function() {
+  var btnData = $(this).attr("data");
+  var apiKey = "&api_key=ATitLzqHisbzyItV8xmCrCqEKbGnqMYM";
+  var queryURL =
+    "http://api.giphy.com/v1/gifs/search?q=" + btnData + apiKey + "&limit=10";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
+
+    var results = response.data;
+
+    for (var i = 0; i < results.length; i++) {
+      var gifDiv = $("<div>");
+
+      var p = $("<p>").text("Rating: " + results[i].rating);
+
+      var gifImage = $("<img>");
+
+      gifImage.attr("src", results[i].images.fixed_height_still.url);
+      gifImage.attr("data-still", results[i].images.fixed_height_still.url);
+      gifImage.attr("data-animate", results[i].images.fixed_height.url);
+      gifImage.attr("data-state", "still");
+      gifImage.addClass("gif");
+
+      gifDiv.append(p);
+      gifDiv.append(gifImage);
+
+      $("#gifs-displayed").prepend(gifDiv);
+    }
+  });
+});
 
 function searchGIFs(event) {
   event.preventDefault();
 
-  var searchTerm = $("#gif-input")
+  searchTerm = $("#gif-input")
     .val()
     .trim();
 
@@ -50,6 +75,8 @@ function searchGIFs(event) {
     return false;
   }
 
+  btnArray.push(searchTerm);
+  console.log(btnArray);
   var apiKey = "&api_key=ATitLzqHisbzyItV8xmCrCqEKbGnqMYM";
   var queryURL =
     "http://api.giphy.com/v1/gifs/search?q=" +
@@ -72,29 +99,44 @@ function searchGIFs(event) {
 
       var gifImage = $("<img>");
 
-      gifImage.addClass("gif");
-
       gifImage.attr("src", results[i].images.fixed_height_still.url);
+      gifImage.attr("data-still", results[i].images.fixed_height_still.url);
+      gifImage.attr("data-animate", results[i].images.fixed_height.url);
+      gifImage.attr("data-state", "still");
+      gifImage.addClass("gif");
 
       gifDiv.append(p);
       gifDiv.append(gifImage);
 
       $("#gifs-displayed").prepend(gifDiv);
+
+      addBtn();
     }
   });
 }
+  
+$("#gifs-displayed").on("click", ".gif", function(event){
+  event.preventDefault();
+
+  var state = $(this).attr("data-state");
+
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+})
+
 
 $(document).ready(function() {
   $("#gif-form").on("submit", searchGIFs);
+  addBtn();
 
-  $(".gif").on("click", function() {
-    var state = $(this).attr("data-state");
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
-    } else {
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
-  });
 });
+
+
+// Errors with code
+// buttons all produce same 10 gifs no matter which button is pressed 
