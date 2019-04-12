@@ -31,7 +31,7 @@ $("#gif-buttons").on("click", ".btn", function() {
   var btnData = $(this).val();
   var apiKey = "&api_key=ATitLzqHisbzyItV8xmCrCqEKbGnqMYM";
   var queryURL =
-    "http://api.giphy.com/v1/gifs/search?q=" + btnData + apiKey + "&limit=10";
+    "https://api.giphy.com/v1/gifs/search?q=" + btnData + apiKey + "&limit=10";
 
   $.ajax({
     url: queryURL,
@@ -78,7 +78,7 @@ function searchGIFs(event) {
   console.log(btnArray);
   var apiKey = "&api_key=ATitLzqHisbzyItV8xmCrCqEKbGnqMYM";
   var queryURL =
-    "http://api.giphy.com/v1/gifs/search?q=" +
+    "https://api.giphy.com/v1/gifs/search?q=" +
     searchTerm +
     apiKey +
     "&limit=10";
